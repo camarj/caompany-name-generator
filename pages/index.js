@@ -23,8 +23,8 @@ export default function Home() {
     });
     const data = await response.json();
     setResult(data.result.replaceAll('\\n', '<br />'));
-
     setLoading(false);
+    setCompanyDescription('');
   }
 
   return (
