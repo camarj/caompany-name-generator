@@ -34,7 +34,7 @@ export default function Home() {
         </Head>
 
         <div className="flex flex-col justify-center">
-          <h3
+          <h1
             className="mb-4
           text-4xl
           font-extrabold
@@ -46,7 +46,7 @@ export default function Home() {
           text-center
           ">
             Genera el nombre de tu empresa 💡
-          </h3>
+          </h1>
           <form onSubmit={onSubmit}>
             <div className="flex flex-col justify-items-center mb-6">
               <label>Describe tu empresa</label>
