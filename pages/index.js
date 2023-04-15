@@ -4,7 +4,6 @@ import { useState } from 'react';
 export default function Home() {
   const [companyDescription, setCompanyDescription] = useState('');
   const [loading, setLoading] = useState(false);
-
   const [result, setResult] = useState([]);
 
   async function onSubmit(event) {
@@ -22,7 +21,7 @@ export default function Home() {
       body: JSON.stringify({ companyDescription }),
     });
     const data = await response.json();
-    setResult(data.result.replaceAll('\\n', '<br />'));
+    setResult(data.result.split('\n'));
     setLoading(false);
     setCompanyDescription('');
   }
@@ -32,7 +31,6 @@ export default function Home() {
       <div className="flex flex-col md:w-1/2">
         <Head>
           <title>Generador de nombres para empresas</title>
-          <link rel="icon" href="/public/building.svg" />
         </Head>
 
         <div className="flex flex-col justify-center">
@@ -71,15 +69,17 @@ export default function Home() {
               />
             </div>
           </form>
-          {loading && (
+          {loading ? (
             <div>
-              <h3>Creando nombres 🧪 💡</h3>
-              <svg
-                className="animate-spin h-5 w-5 mr-3 ..."
-                viewBox="0 0 24 24"></svg>
+              <h3>Creando nombres 🧪💡</h3>
             </div>
+          ) : (
+            <ol>
+              {result.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ol>
           )}
-          <div className="" dangerouslySetInnerHTML={{ __html: result }} />
         </div>
       </div>
     </main>

@@ -17,5 +17,5 @@ export default async function (req, res) {
 }
 
 function generatePrompt(companyDescription) {
-  return `Crea un lista de 4 ideas separadas por coma ',' de nombres para mi empresa que tiene la siguiente descripción:${companyDescription}`;
+  return `Crea una lista de 4 ideas de nombres para mi empresa que tiene la siguiente descripción:${companyDescription}`;
 }
